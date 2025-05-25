@@ -4,6 +4,11 @@ I'm testing with UK Land Registry open dataset for HPI (House Price Index) initi
 
 Using a Medallion Architecture for the data to help keep things organised and to make transfer to a lakehouse smoother should I want to later
 
+TO-DO
+Implement Random Forest
+Predict Future index and price values based on trend and passed in scenarios
+Further enrichment with GDP, Interest and mortgage rates joind on month and year to improve predictions
+
 
 
 
