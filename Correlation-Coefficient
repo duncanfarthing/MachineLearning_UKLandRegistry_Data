@@ -1,0 +1,17 @@
+import numpy as np
+import pandas as pd
+from scipy.stats import pearsonr, spearmanr, chi2_contingency, kendalltau, pointbiserialr
+
+HPIfile = "Data/Bronze/HPI/HousePriceIndex.csv"
+df = pd.read_csv(HPIfile)
+
+#COnvert Areacode ro numeric - trim and cast
+df['AreaCode'] = df['AreaCode'].str.replace(r'[a-zA-Z]', '', regex=True)
+df['AreaCode'] = df['AreaCode'].apply(pd.to_numeric, errors='coerce')
+
+df_numeric = df.select_dtypes(include=[float, int])
+
+correlation_matrix = df_numeric.corr()['Flat12m%Change']
+
+corr_sorted = correlation_matrix.sort_values(ascending=False)
+print(corr_sorted)
